@@ -1,13 +1,20 @@
 # django-tutorial
-Python Django tutorial learning for web development. The project that I'm currently as a Research Assitant for uses Django as web development tool. I'll be writting down notes that I learned here. The notes are mostly from [here](https://www.youtube.com/playlist?list=PL6gx4Cwl9DGBlmzzFcLgDhKTTfNLfX1IK)
+Python Django tutorial learning for web development. The project that I'm currently as a Research Assitant for uses Django as web development tool. I'll be writting down notes that I learned here. The notes are mostly summarized after learning tutorial from [here](https://www.youtube.com/playlist?list=PL6gx4Cwl9DGBlmzzFcLgDhKTTfNLfX1IK)
 
 NOTE: "first_django_website" runs on version 1.8.4; "web_django_new" runs on version 2.0.7.
+
+## Concepts
+* "App": Django calls every little part as an App, so App is simply a main part of the website. IMPORTANT RULE: each App should do ONE thing (a good criteria is that if you can explain an App in one easy sentence, then it's fine. But if cannot, then it needs to be further broken down).
+
+* About urls.py files. Even though there's just one url.py file after creating the project and other apps, it will be messy if you put all the url links in that one files since there will be tons of url links. So it's a good idea to manually create urls.py under each app directory and then import them in the main urls.py.
 
 
 ## Syntax
 * `django-admin startproject project_name`: it will be needed everytime you start a new Django webpage project. Go to the directory that you want to store all your files and type this to command line. "project_name" can be set to whatever name you want, it's just a container to store all your website files. However, the files inside of the "project_name" folder are fixed
 
 * `python manage.py runserver`: type in after go to the project_name directory and when you can see both of the other project_name directory and manage.py file. This will take you to the development web server so that you can see how your website is going. It shouldn't be the server that you hold your real website on.
+
+* `python manage.py startapp app_name`: enter the directory that you can see the manage.py file and run the command to create a new app.
 
 
 ## Files
@@ -20,3 +27,15 @@ NOTE: "first_django_website" runs on version 1.8.4; "web_django_new" runs on ver
 * `project_name/project_name/urls.py`: it's like a table of contents for your website. Basically it contains the instructions of what functionality should be given to that particular URL. For example, many times an URL will direct you to a new webpage, but sometimes an URL might have the functionality to allow you to log out the webpage. So urls.py file will include the instructions to tell what that URL does.
 
 * `project_name/project_name/wsgi.py`: it stands for "web server gateway interface". It's a special type of web server.
+
+* `project_name/app_name/migrations`: the files in this folder connect all your source code with database
+
+* `project_name/app_name/admin.py`: instead of creating admin functionality yourself, django has already created that for you, allowing you to have all the admin related functionalities
+
+* `project_name/app_name/app.py` (this file is not included in version 1.8.4): similar to settings.py file which is basically configuration or setting file for this app
+
+* `project_name/app_name/models.py`: it's basically a blueprint for your database. It's a template of how you are going to store your data for that app
+
+* `project_name/app_name/tests.py`: where you can create test codes to make sure there's no bugs in your app
+
+* `project_name/app_name/views.py`: it simply just contains python functions which take users' requests and give response in some way
