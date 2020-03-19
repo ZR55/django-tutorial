@@ -9,7 +9,7 @@ NOTE: "first_django_website" runs on version 1.8.4; "web_django_new" runs on ver
 * About urls.py files. Even though there's just one url.py file after creating the project and other apps, it will be messy if you put all the url links in that one files since there will be tons of url links. So it's a good idea to manually create urls.py under each app directory and then import them in the main urls.py.
 
 
-## Syntax
+## General Syntax
 * `django-admin startproject project_name`: it will be needed everytime you start a new Django webpage project. Go to the directory that you want to store all your files and type this to command line. "project_name" can be set to whatever name you want, it's just a container to store all your website files. However, the files inside of the "project_name" folder are fixed
 
 * `python manage.py runserver`: type in after go to the project_name directory and when you can see both of the other project_name directory and manage.py file. This will take you to the development web server so that you can see how your website is going. It shouldn't be the server that you hold your real website on.
@@ -39,3 +39,26 @@ NOTE: "first_django_website" runs on version 1.8.4; "web_django_new" runs on ver
 * `project_name/app_name/tests.py`: where you can create test codes to make sure there's no bugs in your app
 
 * `project_name/app_name/views.py`: it simply just contains python functions which take users' requests and give response in some way
+
+
+## Python and JavaScript in Django
+(The following notes is taken based on the tutorial [here](https://www.youtube.com/watch?v=ZjAMRnCu-84&list=LLJMXf6A4Uv_apa_OjWuxWrw&index=7&t=1544s)
+
+Corresponding notes is [here](https://cs50.harvard.edu/web/notes/7/)
+
+* ` python manage.py shell` lets you print stuff out in the terminal.
+
+* In the `models.py`, printing out each class by default is only an object. To better represent the class, you can use a string representation by adding 
+    ```
+    def __str__(self):
+        return f"{class_attr} blah blah {another_class_attr}"
+    ``` 
+This defines what the object should look like when print into the terminal or even in html page. (NOTE: this works not only for django classes, but also a regular class)
+
+   * Settings of foreign key: For example, 
+      
+      `origin = models.ForeignKey(Airport, on_delete = models.CASCADE, related_name = "departures")`
+      
+      * `on_delete` allows you to choose how classes react when values in related classes change. `on_delete = models.CASCADE` asks system to delete related values if one value changes in one table. 
+      * `related_name` allows you to access related class attributes using that name
+   * `class_name.objects.first()` prints out the first item in the object
